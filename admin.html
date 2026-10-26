@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Klients Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script>
+    if (sessionStorage.getItem('admin_auth') !== 'true') {
+      alert('Unauthorized access. Please login from the main page.');
+      window.location.replace('index.html');
+    }
+  </script>
+  <style>
+    body {
+      background: var(--clr-surface-elevated);
+      padding-top: var(--space-xl);
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2xl);
+    }
+    .admin-header h1 {
+      font-family: var(--ff-heading);
+      color: var(--clr-text);
+    }
+    .order-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+      box-shadow: var(--shadow-sm);
+    }
+    .order-card__header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--clr-border-light);
+      padding-bottom: var(--space-xs);
+      margin-bottom: var(--space-xs);
+    }
+    .order-id {
+      font-family: monospace;
+      font-weight: bold;
+      color: var(--clr-primary);
+    }
+    .order-date {
+      font-size: var(--fs-xs);
+      color: var(--clr-text-muted);
+    }
+    .order-details {
+      font-size: var(--fs-small);
+      color: var(--clr-text);
+      line-height: 1.5;
+    }
+    .order-actions {
+      margin-top: var(--space-md);
+      display: flex;
+      gap: var(--space-xs);
+    }
+    .btn-action {
+      padding: 0.4rem 0.8rem;
+      font-size: var(--fs-xs);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-approve {
+      background: var(--clr-accent);
+      color: white;
+    }
+    .btn-delete {
+      background: none;
+      border: 1px solid var(--clr-rose);
+      color: var(--clr-rose);
+      transition: all 0.2s ease;
+    }
+    .btn-delete:hover {
+      background: var(--clr-rose);
+      color: white;
+    }
+
+    .status-select {
+      padding: 0.4rem 0.8rem;
+      font-size: var(--fs-xs);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-sm);
+      background: var(--clr-surface);
+      color: var(--clr-text);
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      padding-right: 2rem;
+    }
+    .status-select:focus, .status-select:hover {
+      border-color: var(--clr-primary);
+    }
+    
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-lg);
+    }
+    .status-column {
+      background: var(--clr-bg);
+      padding: var(--space-md);
+      border-radius: var(--radius-lg);
+    }
+    .status-column h3 {
+      font-family: var(--ff-heading);
+      font-size: var(--fs-small);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-md);
+      color: var(--clr-text-secondary);
+      border-bottom: 2px solid var(--clr-primary-light);
+      padding-bottom: var(--space-xs);
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Particle Container -->
+  <div id="global-particles" style="position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden;" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="admin-header">
+      <h1>Admin Dashboard</h1>
+      <button class="btn btn--secondary" id="btn-logout">Logout</button>
+    </div>
+
+    <div class="tabs-container">
+      <button class="tab-button active" data-tab="pending">New Orders</button>
+      <button class="tab-button" data-tab="in_production">In Production</button>
+      <button class="tab-button" data-tab="completed">Shipped / Completed</button>
+    </div>
+
+    <div class="table-container">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Customer</th>
+            <th>Order Info</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="orders-table-body">
+          <!-- Orders injected here -->
+        </tbody>
+      </table>
+      <div id="no-orders-msg" style="text-align: center; padding: 2rem; color: var(--clr-text-muted); display: none;">
+        No orders found in this category.
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .tabs-container {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--clr-border);
+      padding-bottom: 0.5rem;
+      overflow-x: auto;
+    }
+    .tab-button {
+      background: none;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: var(--fs-small);
+      font-family: var(--ff-heading);
+      color: var(--clr-text-muted);
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .tab-button:hover {
+      color: var(--clr-text);
+    }
+    .tab-button.active {
+      color: var(--clr-primary);
+      font-weight: 700;
+    }
+    .tab-button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--clr-primary);
+    }
+
+    .table-container {
+      background: var(--clr-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--clr-border);
+      overflow-x: auto;
+    }
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .orders-table th, .orders-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--clr-border-light);
+    }
+    .orders-table th {
+      background: var(--clr-bg);
+      font-family: var(--ff-heading);
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--clr-text-secondary);
+    }
+    .orders-table tbody tr:hover {
+      background: var(--clr-bg);
+    }
+    .orders-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .order-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .order-summary__main {
+      font-weight: 600;
+      color: var(--clr-text);
+    }
+
+    .order-summary__meta {
+      font-size: var(--fs-xs);
+      color: var(--clr-text-muted);
+    }
+
+    .order-details-toggle {
+      margin-top: 0.25rem;
+    }
+
+    .order-details-toggle summary {
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--clr-primary);
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      user-select: none;
+    }
+
+    .order-details-toggle summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .order-details-toggle summary::after {
+      content: '▾';
+      font-size: 0.85rem;
+      transition: transform 0.2s ease;
+    }
+
+    .order-details-toggle[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .order-details-panel {
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: var(--clr-bg);
+      border: 1px solid var(--clr-border-light);
+      border-radius: var(--radius-sm);
+      font-size: var(--fs-xs);
+      color: var(--clr-text-secondary);
+      line-height: 1.6;
+    }
+
+    .order-details-panel dl {
+      display: grid;
+      grid-template-columns: minmax(7rem, auto) 1fr;
+      gap: 0.35rem 0.75rem;
+      margin: 0;
+    }
+
+    .order-details-panel dt {
+      font-weight: 600;
+      color: var(--clr-text);
+    }
+
+    .order-details-panel dd {
+      margin: 0;
+      word-break: break-word;
+    }
+
+    .order-details-panel img {
+      max-width: 120px;
+      max-height: 120px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--clr-border);
+      margin-top: 0.25rem;
+      object-fit: cover;
+    }
+  </style>
+
+  <script src="admin.js"></script>
+</body>
+</html>

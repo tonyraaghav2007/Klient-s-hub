@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Klients Hub — Premium packaging, labeling, and package design services. Custom labels, product packaging, and box design for businesses of all sizes.">
+  <meta name="theme-color" content="#a06c3e">
+  <title>Klients Hub — Packaging, Labeling &amp; Design</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Global Particle Container -->
+  <div id="global-particles" style="position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden;" aria-hidden="true"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__logo" id="nav-logo">
+        <div class="navbar__logo-icon" aria-hidden="true">📦</div>
+        Klients Hub
+      </a>
+
+      <!-- Desktop links -->
+      <div class="navbar__links" id="nav-links">
+        <a href="#services" class="navbar__link" id="nav-services">Services</a>
+        <a href="#process" class="navbar__link" id="nav-process">Process</a>
+        <a href="#why-us" class="navbar__link" id="nav-why-us">Why Us</a>
+        <a href="#contact" class="navbar__link" id="nav-contact">Contact</a>
+        <button class="navbar__link" id="nav-track" style="font-weight: 700; color: var(--clr-primary);">Track Order</button>
+        <button class="navbar__link" id="nav-login">Login</button>
+        <button class="theme-toggle" id="theme-toggle-desktop" aria-label="Toggle dark mode">
+          <span class="theme-toggle__icon--dark" aria-hidden="true">🌙</span>
+          <span class="theme-toggle__icon--light" aria-hidden="true">☀️</span>
+        </button>
+        <a href="#order" class="navbar__cta" id="nav-order-cta">
+          <span>Order Online</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="navbar__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile backdrop -->
+  <div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+  <!-- Mobile slide-in panel -->
+  <div class="navbar__mobile-panel" id="nav-mobile-panel" role="dialog" aria-label="Mobile navigation">
+    <a href="#services" class="navbar__link" id="mob-services">Services</a>
+    <a href="#process" class="navbar__link" id="mob-process">Process</a>
+    <a href="#why-us" class="navbar__link" id="mob-why-us">Why Us</a>
+    <a href="#contact" class="navbar__link" id="mob-contact">Contact</a>
+    <button class="navbar__link" id="mob-track" style="font-weight: 700; color: var(--clr-primary); text-align: left;">Track Order</button>
+    <button class="navbar__link" id="mob-login" style="text-align: left;">Login</button>
+    <a href="#order" class="navbar__cta" id="mob-order-cta">
+      <span>Order Online</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+    <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle dark mode">
+      <span class="theme-toggle__icon--dark" aria-hidden="true">🌙</span>
+      <span class="theme-toggle__icon--light" aria-hidden="true">☀️</span>
+    </button>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <!-- Corner Decorators -->
+    <div class="hero__corner hero__corner--tl" aria-hidden="true">📦</div>
+    <div class="hero__corner hero__corner--tr" aria-hidden="true">🏷️</div>
+    <div class="hero__corner hero__corner--bl" aria-hidden="true">🎨</div>
+    <div class="hero__corner hero__corner--br" aria-hidden="true">✨</div>
+
+    <div class="container hero__grid">
+      <div class="hero__content">
+
+        <h1 class="hero__title reveal reveal-delay-1">
+          Packaging That<br><span>Tells Your Story</span>
+        </h1>
+        <p class="hero__subtitle reveal reveal-delay-2">
+          From custom box designs to premium product labels — we craft packaging that elevates your brand and captivates your customers at first sight.
+        </p>
+        <div class="hero__actions reveal reveal-delay-3">
+          <a href="#order" class="btn btn--primary" id="hero-order-btn">
+            Start Your Order
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn btn--secondary" id="hero-services-btn">
+            Explore Services
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__image-wrapper reveal reveal-delay-2">
+        <img src="assets/hero-packaging.png" alt="Beautifully designed product packaging flat lay with custom labels, kraft boxes, and branding materials" class="hero__image" width="520" height="520" loading="eager" fetchpriority="high">
+
+        <!-- Floating cards -->
+        <div class="hero__float-card hero__float-card--top">
+          <div class="hero__float-icon hero__float-icon--green" aria-hidden="true">✓</div>
+          <div>
+            <div class="hero__float-label">Eco-Friendly</div>
+            <div class="hero__float-sublabel">Sustainable materials</div>
+          </div>
+        </div>
+        <div class="hero__float-card hero__float-card--bottom">
+          <div class="hero__float-icon hero__float-icon--rose" aria-hidden="true">★</div>
+          <div>
+            <div class="hero__float-label">Premium Quality</div>
+            <div class="hero__float-sublabel">Industry-leading prints</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">
+          <span class="section-tag__line" aria-hidden="true"></span>
+          What We Do
+          <span class="section-tag__line" aria-hidden="true"></span>
+        </div>
+        <h2 class="section-title">Our Core Services</h2>
+        <p class="section-subtitle">End-to-end packaging solutions — from concept to delivery. We handle every step so your products look their absolute best.</p>
+      </div>
+
+      <div class="services__grid">
+        <!-- Packaging -->
+        <div class="service-card reveal" id="svc-packaging">
+          <div class="service-card__image-wrapper">
+            <img src="assets/hero-packaging.png" alt="Custom product packaging with branded boxes and wrapping materials" class="service-card__image" width="400" height="250" loading="lazy">
+            <div class="service-card__overlay" aria-hidden="true"></div>
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--packaging" aria-hidden="true">📦</div>
+            <h3 class="service-card__title">Product Packaging</h3>
+            <p class="service-card__desc">We pack ready-made products with precision and care. From individual items to bulk orders, we ensure every product is perfectly packaged for retail shelves or e-commerce shipping.</p>
+            <div class="service-card__features">
+              <span class="service-card__tag">Custom Boxes</span>
+              <span class="service-card__tag">Bulk Packing</span>
+              <span class="service-card__tag">Gift Sets</span>
+              <span class="service-card__tag">E-commerce</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Labeling -->
+        <div class="service-card reveal reveal-delay-1" id="svc-labeling">
+          <div class="service-card__image-wrapper">
+            <img src="assets/labeling-service.png" alt="Designer applying a custom label to a premium product box" class="service-card__image" width="400" height="250" loading="lazy">
+            <div class="service-card__overlay" aria-hidden="true"></div>
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--labeling" aria-hidden="true">🏷️</div>
+            <h3 class="service-card__title">Label Design &amp; Printing</h3>
+            <p class="service-card__desc">Custom-designed labels that represent your brand. We create product labels, box labels, stickers, and branding elements — complete design, print, and application.</p>
+            <div class="service-card__features">
+              <span class="service-card__tag">Product Labels</span>
+              <span class="service-card__tag">Box Labels</span>
+              <span class="service-card__tag">Stickers</span>
+              <span class="service-card__tag">Barcodes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Design -->
+        <div class="service-card reveal reveal-delay-2" id="svc-design">
+          <div class="service-card__image-wrapper">
+            <img src="assets/design-service.png" alt="Package designer working on box mockups with color swatches and prototypes" class="service-card__image" width="400" height="250" loading="lazy">
+            <div class="service-card__overlay" aria-hidden="true"></div>
+          </div>
+          <div class="service-card__body">
+            <div class="service-card__icon service-card__icon--design" aria-hidden="true">🎨</div>
+            <h3 class="service-card__title">Package Design</h3>
+            <p class="service-card__desc">We bring your product vision to life with stunning package designs. From structural design to graphic artwork — we create packaging that sells itself on the shelf.</p>
+            <div class="service-card__features">
+              <span class="service-card__tag">Box Design</span>
+              <span class="service-card__tag">Dieline</span>
+              <span class="service-card__tag">3D Mockups</span>
+              <span class="service-card__tag">Branding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">
+          <span class="section-tag__line" aria-hidden="true"></span>
+          How It Works
+          <span class="section-tag__line" aria-hidden="true"></span>
+        </div>
+        <h2 class="section-title">Simple 4-Step Process</h2>
+        <p class="section-subtitle">From your initial idea to the finished product in your hands — we make it seamless.</p>
+      </div>
+
+      <div class="process__grid">
+        <div class="process-step reveal" id="step-1">
+          <div class="process-step__number">01</div>
+          <h3 class="process-step__title">Share Your Vision</h3>
+          <p class="process-step__desc">Tell us about your product, brand, and packaging needs. Upload your designs or describe your ideas.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1" id="step-2">
+          <div class="process-step__number">02</div>
+          <h3 class="process-step__title">Design &amp; Approval</h3>
+          <p class="process-step__desc">Our designers create custom mockups. Review, request changes, and approve the final design.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2" id="step-3">
+          <div class="process-step__number">03</div>
+          <h3 class="process-step__title">Production</h3>
+          <p class="process-step__desc">High-quality printing and packaging assembly with premium materials and meticulous attention to detail.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3" id="step-4">
+          <div class="process-step__number">04</div>
+          <h3 class="process-step__title">Delivery</h3>
+          <p class="process-step__desc">Your beautifully packaged products are quality-checked and delivered right to your doorstep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">
+          <span class="section-tag__line" aria-hidden="true"></span>
+          Why Klients Hub
+          <span class="section-tag__line" aria-hidden="true"></span>
+        </div>
+        <h2 class="section-title">Built Different, Delivered Better</h2>
+        <p class="section-subtitle">Here's what sets us apart from the competition.</p>
+      </div>
+
+      <div class="why-us__grid">
+        <div class="why-card reveal" id="why-quality">
+          <div class="why-card__icon" aria-hidden="true">💎</div>
+          <div>
+            <h3 class="why-card__title">Premium Quality Materials</h3>
+            <p class="why-card__desc">We use only the finest papers, inks, and finishes to ensure your packaging looks and feels luxurious.</p>
+          </div>
+        </div>
+        <div class="why-card reveal reveal-delay-1" id="why-fast">
+          <div class="why-card__icon" aria-hidden="true">⚡</div>
+          <div>
+            <h3 class="why-card__title">Fast Turnaround</h3>
+            <p class="why-card__desc">Need it done quickly? We offer express production and delivery without compromising on quality.</p>
+          </div>
+        </div>
+        <div class="why-card reveal reveal-delay-2" id="why-custom">
+          <div class="why-card__icon" aria-hidden="true">🎯</div>
+          <div>
+            <h3 class="why-card__title">Fully Customizable</h3>
+            <p class="why-card__desc">Every element is tailored to your brand — colors, shapes, sizes, finishes. No cookie-cutter solutions.</p>
+          </div>
+        </div>
+        <div class="why-card reveal reveal-delay-3" id="why-support">
+          <div class="why-card__icon" aria-hidden="true">🤝</div>
+          <div>
+            <h3 class="why-card__title">Dedicated Support</h3>
+            <p class="why-card__desc">From initial consultation to final delivery, you'll have a dedicated team member guiding you every step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <h2 class="cta-banner__title">Ready to Elevate Your Packaging?</h2>
+        <p class="cta-banner__desc">Start your order today and let's create something extraordinary together. No minimum order quantities.</p>
+        <a href="#order" class="btn btn--white" id="cta-order-btn">
+          Order Online Now
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ORDER ONLINE SECTION ===== -->
+  <section class="order-section" id="order">
+    <div class="container">
+      <div class="order-form" id="order-form-wrapper">
+        <h2 class="order-form__title">Place Your Order</h2>
+        <p class="order-form__subtitle">Fill in the details below and our team will get back to you within 24 hours.</p>
+        <form id="order-form" novalidate>
+          <div class="form-step visible" data-step="1">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="order-name">Full Name <span class="required-star" aria-hidden="true">*</span></label>
+                <input type="text" id="order-name" name="name" placeholder="Akash Sharma" required>
+              </div>
+              <div class="form-group">
+                <label for="order-email">Email Address <span class="required-star" aria-hidden="true">*</span></label>
+                <input type="email" id="order-email" name="email" placeholder="john@company.com" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="2">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="order-phone">Phone Number <span class="required-star" aria-hidden="true">*</span></label>
+                <input type="tel" id="order-phone" name="phone" placeholder="+91 8264******" required>
+              </div>
+              <div class="form-group">
+                <label for="order-company">Company Name</label>
+                <input type="text" id="order-company" name="company" placeholder="Your Company">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="3">
+            <div class="form-group">
+              <label for="order-service">Service Required <span class="required-star" aria-hidden="true">*</span></label>
+              <select id="order-service" name="service" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="packaging">Product Packaging</option>
+                <option value="labeling">Label Design &amp; Printing</option>
+                <option value="design">Package Design</option>
+                <option value="all">Full Service (Design + Label + Packaging)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="4">
+            <div class="form-row" id="materials-row">
+              <div class="form-group" id="material-box-group">
+                <label for="order-material-box">Material (Box) <span class="required-star" aria-hidden="true">*</span></label>
+                <select id="order-material-box" name="materialBox" required>
+                  <option value="" disabled selected>Select box material</option>
+                  <option value="SBS">SBS</option>
+                  <option value="White back">White back</option>
+                  <option value="Grey back">Grey back</option>
+                  <option value="Corrugation">Corrugation</option>
+                </select>
+              </div>
+              <div class="form-group" id="material-label-group">
+                <label for="order-material-label">Material (Label/Sticker) <span class="required-star" aria-hidden="true">*</span></label>
+                <select id="order-material-label" name="materialLabel" required>
+                  <option value="" disabled selected>Select label/sticker material</option>
+                  <option value="Chromo paper">Chromo paper</option>
+                  <option value="Art paper">Art paper</option>
+                  <option value="Normal coated">Normal coated</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="5">
+            <div class="form-group">
+              <label for="order-details">Project Details <span class="required-star" aria-hidden="true">*</span></label>
+              <textarea id="order-details" name="details" placeholder="Describe your product, any special requirements, finishing preferences..." rows="4" required></textarea>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="6">
+            <div class="form-group">
+              <label>Package Dimensions <span class="required-star" aria-hidden="true">*</span> <span class="label-hint" id="dimensions-hint">(in cm)</span></label>
+              <div class="form-row form-row--3col">
+                <div class="form-input-unit">
+                  <input type="number" id="order-length" name="length" placeholder="Length" min="0" step="0.1" required>
+                </div>
+                <div class="form-input-unit">
+                  <input type="number" id="order-width" name="width" placeholder="Width" min="0" step="0.1" required>
+                </div>
+                <div class="form-input-unit">
+                  <input type="number" id="order-height" name="height" placeholder="Height" min="0" step="0.1" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="7">
+            <div class="form-group">
+              <label for="order-quantity">Quantity <span class="required-star" aria-hidden="true">*</span></label>
+              <input type="number" id="order-quantity" name="quantity" placeholder="e.g. 500" min="1" max="9999" required>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="8">
+            <div class="form-group">
+              <label for="order-image">Upload Reference Image (Optional)</label>
+              <input type="file" id="order-image" name="image" accept="image/*" class="form-file-input">
+            </div>
+          </div>
+
+          <div class="form-step" data-step="9">
+            <button type="submit" class="btn btn--primary btn--submit" id="order-submit-btn">
+              Submit Order Request
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">📦 Klients Hub</div>
+          <p class="footer__brand-desc">Premium packaging, labeling, and design services that help your products stand out and tell their unique story.</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Services</h4>
+          <a href="#services" class="footer__link" id="ft-packaging">Product Packaging</a>
+          <a href="#services" class="footer__link" id="ft-labeling">Label Design</a>
+          <a href="#services" class="footer__link" id="ft-design">Package Design</a>
+          <a href="#order" class="footer__link" id="ft-order">Order Online</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <a href="#why-us" class="footer__link" id="ft-about">About Us</a>
+          <a href="#process" class="footer__link" id="ft-process">Our Process</a>
+          <a href="#contact" class="footer__link" id="ft-contact">Contact</a>
+        </div>
+        <div>
+          <h4 class="footer__heading">Get In Touch</h4>
+          <a href="mailto:klientshub@gmail.com" class="footer__link" id="ft-email">klientshub@gmail.com</a>
+          <a href="tel:+918264******" class="footer__link" id="ft-phone">+91 8264******</a>
+          <span class="footer__link">Mon – Sat, 9AM – 6PM</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Klients Hub.</span>
+        <span>Crafted with care ❤️</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MODALS ===== -->
+  <!-- Order Success Modal -->
+  <div class="modal-backdrop" id="modal-success">
+    <div class="modal">
+      <button class="modal__close" id="close-success-modal" aria-label="Close modal">×</button>
+      <h3 class="modal__title">Order Placed Successfully!</h3>
+      <p class="modal__desc">Thank you for choosing Klients Hub. We've received your order and will begin processing it shortly.</p>
+      
+      <div class="modal__order-box">
+        <span class="modal__order-label">Your Order Tracking ID:</span>
+        <strong class="modal__order-id" id="display-order-id">ORD-12345</strong>
+      </div>
+
+      <p style="font-size: var(--fs-small); color: var(--clr-text-secondary); text-align: center;">Save this ID to track your order status anytime.</p>
+    </div>
+  </div>
+
+  <!-- Track Order Modal -->
+  <div class="modal-backdrop" id="modal-track">
+    <div class="modal">
+      <button class="modal__close" id="close-track-modal" aria-label="Close modal">×</button>
+      <h3 class="modal__title">Track Your Order</h3>
+      <p class="modal__desc">Enter your Order Tracking ID below to see the current status.</p>
+      
+      <div class="form-group" style="margin-bottom: var(--space-md);">
+        <input type="text" id="track-order-id" placeholder="e.g. ORD-12345">
+      </div>
+      <button class="btn btn--primary" id="btn-track-submit" style="width: 100%; justify-content: center; margin-bottom: var(--space-lg);">
+        Check Status
+      </button>
+
+      <div id="track-result" style="display: none; text-align: center; padding: var(--space-md); background: var(--clr-primary-bg); border-radius: var(--radius-md);">
+        <p style="font-size: var(--fs-small); color: var(--clr-text-secondary); margin-bottom: 0.25rem;">Current Status:</p>
+        <strong id="track-status-text" style="font-size: 1.1rem; color: var(--clr-primary);">Order Received</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Admin Trigger Form -->
+  <div class="modal-backdrop" id="modal-admin-login">
+    <div class="modal" style="max-width: 20rem;">
+      <button class="modal__close" id="close-admin-modal" aria-label="Close modal">×</button>
+      <h3 class="modal__title">Admin Login</h3>
+      <div class="form-group">
+        <input type="text" id="admin-user" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" id="admin-pass" placeholder="Password">
+      </div>
+      <button class="btn btn--primary" id="btn-admin-login" style="width: 100%; justify-content: center;">Login</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
